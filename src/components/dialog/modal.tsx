@@ -25,7 +25,7 @@ export function DialogDemo({
         <Button variant="outline">{dialogTrigger}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
+        <DialogHeader className="font-bold items-center text-2xl">
           <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>{dialogDescription}</DialogDescription>
         </DialogHeader>
