@@ -1,17 +1,10 @@
 import { MagicCard } from "@/components/magicui/magic-card";
 import { Particles } from "@/components/magicui/particles";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function ProjectSection() {
   const { resolvedTheme } = useTheme();
@@ -23,7 +16,7 @@ export default function ProjectSection() {
   }, [resolvedTheme]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full min-h-screen overflow-hidden px-6">
+    <div className="relative ml-24 flex flex-col items-right justify-center w-full min-h-screen overflow-hidden px-6">
       {/* Particles */}
       <Particles
         className="absolute inset-0 z-0"
@@ -52,35 +45,52 @@ export default function ProjectSection() {
       </motion.p>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-3 gap-6 mt-12 w-full max-w-8xl relative z-10">
-        {[1, 2, 3].map((_, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full max-w-7xl relative z-10">
+        {[
+          {
+            title: "GrowFit",
+            description:
+              "A complete fitness management system with a focus on user experience and performance. Features descriptive workout plans, nutrition tracking, and progress monitoring from professionals all over India.",
+            image: "/pexels-victorfreitas-841130.jpg",
+          },
+          {
+            title: "Pocket Ops",
+            description:
+              "HRMS and ERP solution designed to streamline operations and enhance productivity. It offers a comprehensive suite of tools for managing HR, finance, and operations, all in one place.",
+            image: "/pexels-pixabay-416405.jpg",
+          },
+        ].map((project, index) => (
           <motion.div
             key={index}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
+            className="relative group"
           >
-            <Card className="relative rounded-2xl overflow-hidden shadow-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 border border-gray-200 dark:border-gray-700">
-              <MagicCard
-                gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl font-semibold text-white">
-                    Project {index + 1}
-                  </CardTitle>
-                  <CardDescription className="text-sm text-gray-300">
-                    A brief description of the project goes here.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-6 text-gray-700 dark:text-gray-300">
-                  Some details about the project and what it does.
-                </CardContent>
-                <CardFooter className="p-6 flex justify-center">
-                  <Button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg transition duration-300 hover:shadow-blue-500/50">
-                    View Project
-                  </Button>
-                </CardFooter>
-              </MagicCard>
-            </Card>
+            <MagicCard
+              className="p-6 rounded-xl shadow-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-lg bg-opacity-40 border border-gray-300 dark:border-gray-700 flex flex-col h-full"
+              gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+            >
+              {/* Image with Hover Effect */}
+              <div className="relative h-48 overflow-hidden rounded-lg">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition duration-300 ease-in-out group-hover:blur-md"
+                />
+                {/* Overlay with Description (Initially Hidden) */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
+                  <p className="text-lg font-medium">{project.description}</p>
+                </div>
+              </div>
+
+              <CardHeader className="mt-4">
+                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
+                  {project.title}
+                </CardTitle>
+              </CardHeader>
+            </MagicCard>
           </motion.div>
         ))}
       </div>

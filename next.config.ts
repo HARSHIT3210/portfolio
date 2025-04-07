@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["api.memegen.link"], // Allow this domain for Next.js Image optimization
+  },
 };
 
 export default nextConfig;

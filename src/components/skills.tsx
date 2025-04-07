@@ -63,7 +63,7 @@ export function SkillsMarquee() {
   }, [resolvedTheme]);
 
   return (
-    <div className="relative h-screen flex flex-col items-start border-0 justify-start w-full overflow-hidden py-10">
+    <div className="relative h-screen flex flex-col items-start border-0 justify-center w-full overflow-hidden py-10">
       <Particles
         className="absolute inset-0 z-0"
         quantity={200}
