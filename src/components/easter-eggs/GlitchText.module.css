@@ -1,11 +1,8 @@
 .glitch {
     position: relative;
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-    text-transform: uppercase;
     display: inline-block;
     transition: 0.3s;
+    cursor: pointer;
   }
   
   .glitch::before,

@@ -8,7 +8,7 @@ export default function LogoEasterEgg() {
 
   const handleClick = () => {
     setClicks(clicks + 1);
-    if (clicks >= 2) {
+    if (clicks >= 1) {
       setTheme(theme === "dark" ? "light" : "dark");
       setClicks(0);
     }

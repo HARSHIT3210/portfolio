@@ -50,7 +50,7 @@ export default function Navbar() {
                 <InteractiveHoverButton>Harshit Mehta</InteractiveHoverButton>
               </Link>
               <div className="hidden md:flex space-x-6">
-                {["About", "Projects", "Skills", "Blogs"].map(
+                {["About", "Projects", "Skills"].map(
                   (section) => (
                     <Link
                       key={section}

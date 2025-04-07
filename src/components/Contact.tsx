@@ -20,7 +20,7 @@ import { DialogClose } from "./ui/dialog";
 const FormSchema = z.object({
   name: z.string(),
   email: z.string().email(),
-  message: z.string().min(10),
+  message: z.string(),
 });
 
 export function ContactForm() {
@@ -35,8 +35,26 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    toast.success("Form submitted successfully!");
-    console.log(data);
+    const response = await fetch("https://formspree.io/f/xpwpoyqq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    toast("Success", {
+      description: "Message sent successfully.",
+      duration: 4000,
+    });
+
+    if (response.ok) {
+      toast("Success", {
+        description: "Message sent successfully.",
+        duration: 4000,
+      });
+      form.reset();
+    } else {
+      toast.error("Failed to send message.");
+    }
   };
 
   return (
@@ -83,11 +101,22 @@ export function ContactForm() {
           )}
         />
         <div className="flex justify-end gap-4">
-          <Button className="mt-3 mb-3 cursor-pointer" size={"sm"} type="submit">
-            Send Message
-          </Button>
           <DialogClose asChild>
-            <Button className="mt-3 mb-3 cursor-pointer" type="button" size={"sm"} variant="secondary">
+            <Button
+              className="mt-3 mb-3 cursor-pointer"
+              size={"sm"}
+              type="submit"
+            >
+              Send Message
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button
+              className="mt-3 mb-3 cursor-pointer"
+              type="button"
+              size={"sm"}
+              variant="secondary"
+            >
               Close
             </Button>
           </DialogClose>

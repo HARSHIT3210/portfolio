@@ -16,7 +16,7 @@ export default function ProjectSection() {
   }, [resolvedTheme]);
 
   return (
-    <div className="relative ml-24 flex flex-col items-right justify-center w-full min-h-screen overflow-hidden px-6">
+    <div className="relative flex flex-col items-center justify-center w-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-12">
       {/* Particles */}
       <Particles
         className="absolute inset-0 z-0"
@@ -28,7 +28,7 @@ export default function ProjectSection() {
 
       {/* Title Section */}
       <motion.h1
-        className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-800 drop-shadow-lg"
+        className="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-800 drop-shadow-lg text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -36,7 +36,7 @@ export default function ProjectSection() {
         My Projects
       </motion.h1>
       <motion.p
-        className="mt-3 text-xl text-gray-600 dark:text-gray-300"
+        className="mt-3 text-lg sm:text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
@@ -45,7 +45,7 @@ export default function ProjectSection() {
       </motion.p>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full max-w-7xl relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-12 w-full max-w-6xl relative z-10">
         {[
           {
             title: "GrowFit",
@@ -67,11 +67,11 @@ export default function ProjectSection() {
             className="relative group"
           >
             <MagicCard
-              className="p-6 rounded-xl shadow-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-lg bg-opacity-40 border border-gray-300 dark:border-gray-700 flex flex-col h-full"
+              className="p-4 sm:p-6 rounded-xl shadow-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-lg bg-opacity-40 border border-gray-300 dark:border-gray-700 flex flex-col h-full"
               gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
             >
               {/* Image with Hover Effect */}
-              <div className="relative h-48 overflow-hidden rounded-lg">
+              <div className="relative h-40 sm:h-48 overflow-hidden rounded-lg">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -81,12 +81,14 @@ export default function ProjectSection() {
                 />
                 {/* Overlay with Description (Initially Hidden) */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-                  <p className="text-lg font-medium">{project.description}</p>
+                  <p className="text-sm sm:text-lg font-medium">
+                    {project.description}
+                  </p>
                 </div>
               </div>
 
               <CardHeader className="mt-4">
-                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <CardTitle className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white text-center">
                   {project.title}
                 </CardTitle>
               </CardHeader>

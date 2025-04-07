@@ -10,24 +10,23 @@ export default function Portfolio() {
   return (
     <div className="overflow-hidden bg-background">
       <Navbar />
-      <section id="home" className="h-screen">
+      <section id="home" className="min-h-screen px-4 sm:px-8">
         <Home />
       </section>
-      <section id="about" className="h-screen">
-        <About/>
+      <section id="about" className="min-h-screen px-4 sm:px-8">
+        <About />
       </section>
-      <section id="projects" className="h-screen">
+      <section id="projects" className="min-h-screen px-4 sm:px-8">
         <ProjectSection />
       </section>
-      <section id="skills" className="h-screen">
+      <section id="skills" className="min-h-screen px-4 sm:px-8">
         <SkillsMarquee />
       </section>
-      <footer className="h-24">
+      <footer className="h-24 px-4 sm:px-8">
         <div className="flex items-center justify-center h-full">
-          <Footer/>
+          <Footer />
         </div>
       </footer>
-      
     </div>
   );
 }

@@ -47,9 +47,11 @@ const secondRow = skills.slice(skills.length / 2);
 
 const SkillCard = ({ name, icon }: { name: string; icon: JSX.Element }) => {
   return (
-    <div className="flex items-center justify-center gap-3 p-4 rounded-full shadow-md bg-white dark:bg-gray-800 w-48">
-      <span className="text-3xl">{icon}</span>
-      <span className="font-medium text-sm dark:text-white">{name}</span>
+    <div className="flex items-center justify-center gap-3 p-3 sm:p-4 rounded-full shadow-md bg-white dark:bg-gray-800 w-40 sm:w-48">
+      <span className="text-2xl sm:text-3xl">{icon}</span>
+      <span className="font-medium text-xs sm:text-sm dark:text-white">
+        {name}
+      </span>
     </div>
   );
 };
@@ -63,7 +65,7 @@ export function SkillsMarquee() {
   }, [resolvedTheme]);
 
   return (
-    <div className="relative h-screen flex flex-col items-start border-0 justify-center w-full overflow-hidden py-10">
+    <div className="relative min-h-screen flex flex-col items-center justify-center w-full overflow-hidden py-10">
       <Particles
         className="absolute inset-0 z-0"
         quantity={200}
@@ -72,7 +74,7 @@ export function SkillsMarquee() {
         refresh
       />
       <motion.h1
-        className="text-6xl ml-28 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-800"
+        className="text-4xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-800 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -80,7 +82,7 @@ export function SkillsMarquee() {
         My Tech Stack
       </motion.h1>
       <motion.p
-        className="mt-3 ml-28 text-2xl text-gray-600 dark:text-gray-300"
+        className="mt-3 text-lg sm:text-2xl text-gray-600 dark:text-gray-300 text-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
@@ -102,13 +104,12 @@ export function SkillsMarquee() {
         ))}
       </Marquee>
 
-      {/* First Marquee Row Again*/}
+      {/* First Marquee Row Again */}
       <Marquee pauseOnHover className="[--duration:10s]">
         {firstRow.map((skill, index) => (
           <SkillCard key={index} {...skill} />
         ))}
       </Marquee>
-      {/* Gradient Effect on Edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
     </div>
