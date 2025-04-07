@@ -89,7 +89,7 @@ export function SkillsMarquee() {
       </motion.p>
 
       {/* First Marquee Row */}
-      <Marquee pauseOnHover className="mt-10 [--duration:20s]">
+      <Marquee pauseOnHover className="mt-10 [--duration:10s]">
         {firstRow.map((skill, index) => (
           <SkillCard key={index} {...skill} />
         ))}
@@ -98,6 +98,13 @@ export function SkillsMarquee() {
       {/* Second Marquee Row (Reversed) */}
       <Marquee reverse pauseOnHover className="[--duration:20s]">
         {secondRow.map((skill, index) => (
+          <SkillCard key={index} {...skill} />
+        ))}
+      </Marquee>
+
+      {/* First Marquee Row Again*/}
+      <Marquee pauseOnHover className="[--duration:10s]">
+        {firstRow.map((skill, index) => (
           <SkillCard key={index} {...skill} />
         ))}
       </Marquee>

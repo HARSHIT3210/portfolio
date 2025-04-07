@@ -41,21 +41,28 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16">
             {/* Left Side - Name & Links */}
             <div className="flex space-x-6 items-center">
-              <a className="text-sm font-bold" href="#">
+              <Link
+                to={"home"}
+                smooth={true}
+                duration={800}
+                className="cursor-pointer hover:text-blue-500 dark:hover:text-gray-300"
+              >
                 <InteractiveHoverButton>Harshit Mehta</InteractiveHoverButton>
-              </a>
+              </Link>
               <div className="hidden md:flex space-x-6">
-                {["About", "Projects", "Skills", "Blogs"].map((section) => (
-                  <Link
-                    key={section}
-                    to={section.toLowerCase()}
-                    smooth={true}
-                    duration={800}
-                    className="cursor-pointer hover:text-blue-500 dark:hover:text-gray-300"
-                  >
-                    {section}
-                  </Link>
-                ))}
+                {["About", "Projects", "Skills", "Blogs"].map(
+                  (section) => (
+                    <Link
+                      key={section}
+                      to={section.toLowerCase()}
+                      smooth={true}
+                      duration={800}
+                      className="cursor-pointer hover:text-blue-500 dark:hover:text-gray-300"
+                    >
+                      {section}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
 
